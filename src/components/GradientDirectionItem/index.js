@@ -11,7 +11,7 @@ const GradientDirectionItem = props => {
       <DirectionButton
         type="button"
         onClick={onClickedDirection}
-        style={{opacity: isActive ? 1 : 0.5}}
+        isActive={isActive}
       >
         {displayText}
       </DirectionButton>

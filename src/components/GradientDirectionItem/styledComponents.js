@@ -6,7 +6,7 @@ export const DirectionButton = styled.button`
   padding: 12px;
   border: none;
   outline: none;
-  opacity: 0.8;
+  opacity: ${props => (props.isActive ? '1' : '0.5')};
   border-radius: 10px;
   min-height: 34px;
 `

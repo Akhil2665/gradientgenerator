@@ -16,11 +16,11 @@ export const AppContainer = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 200vh
-  background-image: linear-gradient(${props => {
+  background-image: ${props => {
     const {firstColorHexCode, secondColorHexCode, activeDirection} =
       props.dataReq
-    return `to ${activeDirection}, ${firstColorHexCode}, ${secondColorHexCode}`
-  }});
+    return `linear-gradient(to ${activeDirection}, ${firstColorHexCode}, ${secondColorHexCode})`
+  }};
 `
 export const ColorSelctionContainer = styled.div`
   display: flex;
@@ -32,8 +32,9 @@ export const ColorSelctionContainer = styled.div`
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  
   align-items: center;
+  margin: 30px;
 `
 export const LabelElement = styled.label`
   font-size: 20px;
