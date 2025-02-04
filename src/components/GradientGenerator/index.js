@@ -1,6 +1,19 @@
 import {Component} from 'react'
 
-import GradientDirectionItem from './GradientDirectionItem'
+import GradientDirectionItem from '../GradientDirectionItem'
+
+import {
+  AppContainer,
+  Heading,
+  SubHeading,
+  ColorPickerElement,
+  ColorSelctionContainer,
+  DirectionList,
+  InputContainer,
+  LabelElement,
+  GenerateButton,
+  FormContainer,
+} from './styledComponents'
 
 const gradientDirectionsList = [
   {directionId: 'TOP', value: 'top', displayText: 'Top'},
@@ -13,39 +26,90 @@ const gradientDirectionsList = [
 class GradientGenerator extends Component {
   state = {
     activeDirection: gradientDirectionsList[0].value,
+    secondColorHexCode: `#8ae323`,
+    firstColorHexCode: `#014f7b`,
+    dataReq: {
+      secondColorHexCode: `#8ae323`,
+      firstColorHexCode: `#014f7b`,
+      activeDirection: 'top',
+    },
+  }
+
+  onChangefirstColorHexCode = event => {
+    this.setState({firstColorHexCode: event.target.value})
+  }
+
+  onChangesecondColorHexCode = event => {
+    this.setState({secondColorHexCode: event.target.value})
+  }
+
+  changeActiveDirection = value => {
+    this.setState({activeDirection: value})
+  }
+
+  onSubmitData = () => {
+    const {firstColorHexCode, secondColorHexCode, activeDirection} = this.state
+    this.setState(prevState => ({
+      dataReq: {
+        ...prevState.dataReq,
+        activeDirection,
+        secondColorHexCode,
+        firstColorHexCode,
+      },
+    }))
   }
 
   render() {
-    const {} = this.state
+    const {dataReq} = this.state
+    const {firstColorHexCode, secondColorHexCode} = dataReq
+
+    console.log(firstColorHexCode, secondColorHexCode)
     return (
-      <AppContainer>
+      <AppContainer dataReq={dataReq} data-testid="gradientGenerator">
         <Heading>Generate a CSS Color Gradient</Heading>
         <SubHeading>Choose Direction</SubHeading>
-        <DirectionList>
-          {gradientDirectionsList.map(eachObj => (
-            <GradientDirectionItem directionDetails={eachObj} />
-          ))}
-        </DirectionList>
-        <SubHeading>Choose Direction</SubHeading>
-        <ColorSelctionContainer>
-          <InputContainer>
-            <LabelElement htmlFor={secondColor}></LabelElement>
-            <ColorPickerElement
-              id="firstColor"
-              type="color"
-              colorPicked={secondColorHexCode}
-            ></ColorPickerElement>
-          </InputContainer>
-          <InputContainer>
-            <LabelElement htmlFor={secondColor}></LabelElement>
-            <ColorPickerElement
-              id="secondColor"
-              type="color"
-              colorPicked={secondColorHexCode}
-            ></ColorPickerElement>
-          </InputContainer>
-        </ColorSelctionContainer>
+        <FormContainer>
+          <DirectionList>
+            {gradientDirectionsList.map(eachObj => (
+              <GradientDirectionItem
+                directionDetails={eachObj}
+                changeActiveDirection={this.changeActiveDirection}
+                key={eachObj.directionId}
+              />
+            ))}
+          </DirectionList>
+          <SubHeading>Pick the Colors</SubHeading>
+          <ColorSelctionContainer>
+            <InputContainer>
+              <LabelElement htmlFor="firstColor">
+                {firstColorHexCode}
+              </LabelElement>
+              <ColorPickerElement
+                type="color"
+                id="firstColor"
+                value={firstColorHexCode}
+                onChange={this.onChangefirstColorHexCode}
+              />
+            </InputContainer>
+            <InputContainer>
+              <LabelElement htmlFor="secondColor">
+                {secondColorHexCode}
+              </LabelElement>
+              <ColorPickerElement
+                id="secondColor"
+                type="color"
+                value={secondColorHexCode}
+                onChange={this.onChangesecondColorHexCode}
+              />
+            </InputContainer>
+          </ColorSelctionContainer>
+          <GenerateButton type="button" onClick={this.onSubmitData}>
+            Generate
+          </GenerateButton>
+        </FormContainer>
       </AppContainer>
     )
   }
 }
+
+export default GradientGenerator
