@@ -17,11 +17,8 @@ export const AppContainer = styled.div`
   align-items: center;
   min-height: 200vh
   background-image: linear-gradient(${props => {
-    const {
-      firstColorHexCode,
-      secondColorHexCode,
-      activeDirection,
-    } = props.dataReq
+    const {firstColorHexCode, secondColorHexCode, activeDirection} =
+      props.dataReq
     return `to ${activeDirection}, ${firstColorHexCode}, ${secondColorHexCode}`
   }});
 `

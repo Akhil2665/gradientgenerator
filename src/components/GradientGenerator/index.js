@@ -60,7 +60,7 @@ class GradientGenerator extends Component {
   }
 
   render() {
-    const {dataReq} = this.state
+    const {dataReq, activeDirection} = this.state
     const {firstColorHexCode, secondColorHexCode} = dataReq
 
     console.log(firstColorHexCode, secondColorHexCode)
@@ -74,6 +74,7 @@ class GradientGenerator extends Component {
               <GradientDirectionItem
                 directionDetails={eachObj}
                 changeActiveDirection={this.changeActiveDirection}
+                isActive={eachObj.value === activeDirection}
                 key={eachObj.directionId}
               />
             ))}
