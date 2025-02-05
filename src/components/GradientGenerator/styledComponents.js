@@ -10,18 +10,24 @@ export const SubHeading = styled.h1`
 `
 
 export const AppContainer = styled.div`
-  
+  background-image: ${props => {
+    const {
+      firstColorHexCode,
+      secondColorHexCode,
+      activeDirection,
+    } = props.dataReq
+    return `linear-gradient(to ${activeDirection}, ${firstColorHexCode}, ${secondColorHexCode})`
+  }};
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 200vh
-  background-image: ${props => {
-    const {firstColorHexCode, secondColorHexCode, activeDirection} =
-      props.dataReq
-    return `linear-gradient(to ${activeDirection}, ${firstColorHexCode}, ${secondColorHexCode})`
-  }};
+  min-height: 100vh;
+  width: 100%;
+  color: #ffffff;
 `
+
 export const ColorSelctionContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -32,7 +38,7 @@ export const ColorSelctionContainer = styled.div`
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   align-items: center;
   margin: 30px;
 `
@@ -41,8 +47,8 @@ export const LabelElement = styled.label`
   font-weight: 500px;
 `
 export const ColorPickerElement = styled.input`
-  height: 30px;
-  width: 60px;
+  height: 40px;
+  width: 80px;
   opacity: 0.5;
   border: none;
 `
@@ -53,6 +59,7 @@ export const GenerateButton = styled.button`
   outline: none;
   padding: 10px;
   border-radius: 10px;
+  font-weight: 600;
 `
 
 export const DirectionList = styled.ul`

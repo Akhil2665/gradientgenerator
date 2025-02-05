@@ -60,8 +60,12 @@ class GradientGenerator extends Component {
   }
 
   render() {
-    const {dataReq, activeDirection} = this.state
-    const {firstColorHexCode, secondColorHexCode} = dataReq
+    const {
+      dataReq,
+      activeDirection,
+      firstColorHexCode,
+      secondColorHexCode,
+    } = this.state
 
     console.log(firstColorHexCode, secondColorHexCode)
     return (
