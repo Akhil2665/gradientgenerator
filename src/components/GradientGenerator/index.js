@@ -86,22 +86,16 @@ class GradientGenerator extends Component {
           <SubHeading>Pick the Colors</SubHeading>
           <ColorSelctionContainer>
             <InputContainer>
-              <LabelElement htmlFor="firstColor">
-                {firstColorHexCode}
-              </LabelElement>
+              <LabelElement>{firstColorHexCode}</LabelElement>
               <ColorPickerElement
                 type="color"
-                id="firstColor"
                 value={firstColorHexCode}
                 onChange={this.onChangefirstColorHexCode}
               />
             </InputContainer>
             <InputContainer>
-              <LabelElement htmlFor="secondColor">
-                {secondColorHexCode}
-              </LabelElement>
+              <LabelElement>{secondColorHexCode}</LabelElement>
               <ColorPickerElement
-                id="secondColor"
                 type="color"
                 value={secondColorHexCode}
                 onChange={this.onChangesecondColorHexCode}

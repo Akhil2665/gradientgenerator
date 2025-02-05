@@ -5,7 +5,7 @@ export const Heading = styled.h1`
   font-size: 24px;
 `
 
-export const SubHeading = styled.h1`
+export const SubHeading = styled.p`
   font-size: 14px;
 `
 
@@ -42,7 +42,7 @@ export const InputContainer = styled.div`
   align-items: center;
   margin: 30px;
 `
-export const LabelElement = styled.label`
+export const LabelElement = styled.p`
   font-size: 20px;
   font-weight: 500px;
 `
